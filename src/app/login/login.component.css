@@ -1,0 +1,26 @@
+.center-form {
+    display: flex;
+    justify-content: center;
+}
+.small-form {
+    max-width: 500px; /* Réglez la largeur souhaitée en pixels ou en pourcentage */
+    margin: 0 auto; /* Centre le formulaire horizontalement */
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.navbar-custom {
+    height: 80px; /* Ajustez la hauteur selon vos préférences */
+}
+  
+.navbar-custom .d-flex {
+    height: 100%;
+}
+  
+.navbar-custom .d-flex .align-items-center {
+    height: 100%;
+}
+  

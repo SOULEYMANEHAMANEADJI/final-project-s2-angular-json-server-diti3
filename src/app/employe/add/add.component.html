@@ -1,0 +1,86 @@
+<div class="all-add bg-secondary">
+  <div class="container center-form mb-4">
+    <div class="card col-md-10 bg-light mt-1 small-form">
+      <div class="card-header text-center">
+        <em class="font-italic">
+          <h2 class="title font-weight-bold">Add an employee</h2>
+        </em>
+      </div>
+      <!--  <div *ngIf="successMessage" class="alert alert-success">
+          {{ successMessage }}
+        </div>
+        
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          {{ errorMessage }}
+        </div>
+       -->
+      <div class="card-body">
+        <form (ngSubmit)="add()" #employeForm="ngForm">
+         <div class="form-group">
+            <label for="prenom">Prénom</label>
+            <input name="prenom" type="text" class="form-control" id="prenom" placeholder="Votre prénom ici"
+              [(ngModel)]="employe.prenom" required minlength="2" pattern="[A-Za-z]+" autocomplete="off" />
+            <div *ngIf="employeForm.controls['prenom'].invalid && employeForm.controls['prenom'].touched"
+              class="text-danger font-weight-bold">
+              Le prénom est requis et doit comporter uniquement des caractères alphabétiques avec au moins 2 caractères.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="nom">Nom</label>
+            <input name="nom" type="text" class="form-control" id="nom" placeholder="Votre nom ici"
+              [(ngModel)]="employe.nom" required minlength="2" pattern="[A-Za-z]+" autocomplete="off" />
+            <div *ngIf="employeForm.controls['nom'].invalid && employeForm.controls['nom'].touched"
+              class="text-danger font-weight-bold">
+              Le nom est requis et doit comporter uniquement des caractères alphabétiques avec au moins 2 caractères.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input name="email" readonly type="text" class="form-control" id="email"
+              placeholder="Cliquez sur le bouton Generate Email si prénom et nom sont renseignés"
+              [(ngModel)]="employe.email" required />
+            <div *ngIf="employeForm.controls['email'].invalid && employeForm.controls['email'].touched"
+              class="text-danger font-weight-bold">
+              L'email est requis.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="salaire">Salaire</label>
+            <input name="salaire" type="number" class="form-control" id="salaire" placeholder="Votre salaire ici"
+              [(ngModel)]="employe.salaire" required autocomplete="off" min="0" max="100000" />
+            <div *ngIf="employeForm.controls['salaire'].invalid && employeForm.controls['salaire'].touched"
+              class="text-danger font-weight-bold">
+              Le salaire est requis et ne doit pas être négatif.
+              Et le salaire doit être compris entre 0 et 100000 ?
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="service">Service</label>
+            <select [(ngModel)]="employe.serviceId" name="serviceId" class="form-control" required>
+              <option *ngFor="let service of services" [value]="service.id"
+                [selected]="service.id === employe.serviceId">{{ service.name }}</option>
+            </select>
+            <div
+              *ngIf="employeForm.controls['serviceId'].invalid && employeForm.controls['serviceId'].touched || employe.serviceId <= 0"
+              class="text-danger font-weight-bold">
+              <div *ngIf="employe.serviceId <= 0">
+                Le choix d'un service est requis.
+              </div>
+              <div *ngIf="employeForm.controls['serviceId'].errors?.['required']">
+                Le service est requis.
+              </div>
+            </div>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary mr-2"
+              [disabled]="employeForm.invalid || employe.serviceId <= 0">Add</button>
+            <button type="button" class="btn btn-success mr-2"
+              [disabled]="!isNameValid() || employe.prenom.length < 2 || employe.nom.length < 2"
+              (click)="generateEmail()">Generate Email</button>
+            <button type="button" routerLink="/employe/list" class="btn btn-outline-info">Lister Employés</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+{
+  "employes": [
+    {
+      "id": 1,
+      "prenom": "abdoulaye",
+      "nom": "gaye",
+      "email": "abgaye2023@groupeisi.com",
+      "salaire": 70000,
+      "serviceId": 2
+    },
+    {
+      "id": 2,
+      "prenom": "ibrahima",
+      "nom": "sy",
+      "email": "ibsy2023@groupeisi.com",
+      "salaire": 80000,
+      "serviceId": 2
+    },
+    {
+      "id": 3,
+      "prenom": "yankhoba",
+      "nom": "mbengue",
+      "email": "yambengue2023@groupeisi.com",
+      "salaire": 20000,
+      "serviceId": 7
+    }
+  ],
+  "services": [
+    {
+      "id": 1,
+      "name": "MARKETING"
+    },
+    {
+      "id": 2,
+      "name": "INFORMATIQUE"
+    },
+    {
+      "id": 3,
+      "name": "RH"
+    },
+    {
+      "id": 4,
+      "name": "DERMATOLOGIQUE"
+    },
+    {
+      "id": 5,
+      "name": "OPHTALMOLOGIQUE"
+    },
+    {
+      "id": 6,
+      "name": "PEDIATRIQUE"
+    },
+    {
+      "id": 7,
+      "name": "LOGISTIQUE"
+    }
+  ],
+  "signupUsers": [
+    {
+      "fullname": "Luqman HAMANE ADJI",
+      "email": "adji@gmail.com",
+      "password": "adji",
+      "phone": 785945637,
+      "id": 1
+    },
+    {
+      "fullname": "Abdoulaye GAYE",
+      "email": "abgaye@groupeisi.com",
+      "password": "toto",
+      "phone": 771800510,
+      "id": 2
+    }
+  ]
+}

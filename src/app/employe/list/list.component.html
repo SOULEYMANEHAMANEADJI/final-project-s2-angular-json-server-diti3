@@ -1,0 +1,60 @@
+<div class="all-list bg-light">
+  <nav class="navbar navbar-dark bg-dark justify-content-between mb-3 fixed-top">
+    <a class="navbar-brand">Gestion Employés ANGULAR-JSON-SERVER</a>
+    <div class="navbar-date text-white">
+      <b><i>Date Du Jour : {{ currentDate | date }}</i></b><br>
+      <b><i>Heure Actuelle : {{ currentTime }}</i></b>
+    </div>
+    <li>
+      <a routerLink="/employe/add-service" class="btn btn-outline-primary mr-2">Add a service</a>
+      <a routerLink="/employe/add" class="btn btn-outline-success mr-2">Add</a>
+      <a hidden routerLink="/employe/list" class="btn btn-outline-primary mr-2">Login</a>
+      <a routerLink="/login" class="btn btn-outline-danger">Logout</a>
+    </li>
+  </nav>
+  <!-- DITI3-EXAMEN DERNIER SEMESTRE -->
+  <div class="text-center mt-5">
+    <h3 hidden class="title bg-light text-primary"><marquee>Souleymane HAMANE ADJI</marquee></h3>
+    <h3 class="title bg-light text-primary"><marquee> {{ loggedInUser }} </marquee></h3>
+  </div>
+  <div class="container card col-md-10 text-center mt-3">
+      <div class="card-header text-center">
+          <em class="font-italic"><h2 class="title text-primary font-weight-bold">LISTE DES EMPLOYES</h2></em>
+      </div>
+      <p> {{ loggedInUser }} </p>
+      <div class="input-group flex-nowrap">
+        <span class="input-group-text text-primary" id="addon-wrapping"><b><i>Search By</i></b></span>
+        <input type="text" class="form-control text-center" placeholder="Rechercher un employé par prénom, nom, email, salaire ou service" aria-label="Search Table Data" aria-describedby="addon-wrapping" [(ngModel)]="searchtext">
+        <!-- (input)="onSearchChange()" -->
+      </div>
+      <div class="table-responsive">
+          <table class="table table-striped table-dark table-hover">
+              <thead class="title font-weight-bold font-italic">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Prénom</th>
+                  <th scope="col">Nom</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Salaire</th>
+                  <th scope="col">Service</th>
+                  <th scope="col" colspan="2">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let e of getfilteredEmployes()">
+                  <td>{{ e.id }}</td>
+                  <td>{{ e.prenom | titlecase }}</td>
+                  <td>{{ e.nom | uppercase }}</td>
+                  <td>{{ e.email | lowercase }}</td>
+                  <td>{{ e.salaire | currency:'USD':'symbol':'1.0-0' }}</td>                  
+                  <td>{{ getServiceName(e.serviceId) | uppercase }}</td>
+                  <td>
+                      <a [routerLink]="['/employe/edit', e.id]" class="btn btn-outline-warning mr-3">Edit</a>
+                      <a (click)="delete(e.id)" class="btn btn-outline-danger">Delete</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
+  </div>
+</div>

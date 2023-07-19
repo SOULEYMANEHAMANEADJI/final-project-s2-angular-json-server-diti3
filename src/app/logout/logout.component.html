@@ -1,0 +1,55 @@
+<div class="all-logout bg-info fixed-top">
+  <nav class="navbar navbar-dark bg-dark navbar-custom fixed-top">
+    <div class="d-flex align-items-center justify-content-center text-white">
+      <div class="mr-4 text-large">
+        <b>Date Du Jour : {{ currentDate | date }}</b>
+      </div>
+      <div class="text-large">
+        <b>Heure Actuelle : {{ currentTime }}</b>
+      </div>
+    </div>
+  </nav>
+  <div class="container center-form mb-4">
+      <div class="card col-md-10 bg-light mt-1 small-form">
+          <div class="card-header text-center text-success">
+            <em class="font-italic">
+              <h2 class="font-weight-bold">Register</h2>
+              <h6 class="text-danger font-weight-bold">Register Yourself !!</h6>
+            </em>
+          </div>
+          <div class="card-body">
+              <form [formGroup]="logoutForm" (ngSubmit)="signUp()">
+                  <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Full Name</label>
+                      <input formControlName="fullname" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      <div *ngIf="logoutForm.get('fullname')?.invalid && (logoutForm.get('fullname')?.dirty || logoutForm.get('fullname')?.touched)" class="text-danger">Full Name is required</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Mobile Number</label>
+                      <input formControlName="phone" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      <div *ngIf="logoutForm.get('phone')?.invalid && (logoutForm.get('phone')?.dirty || logoutForm.get('phone')?.touched)" class="text-danger">Mobile Number is required</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Email address</label>
+                      <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      <div *ngIf="logoutForm.get('email')?.invalid && (logoutForm.get('email')?.dirty || logoutForm.get('email')?.touched)" class="text-danger">
+                          <div *ngIf="logoutForm.get('email')?.errors?.['required']">Email is required</div>
+                          <div *ngIf="logoutForm.get('email')?.errors?.['email']">Invalid email format</div>
+                      </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Password</label>
+                      <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+                      <div *ngIf="logoutForm.get('password')?.invalid && (logoutForm.get('password')?.dirty || logoutForm.get('password')?.touched)" class="text-danger">Password is required</div>
+                    </div>
+                    
+                  <button type="submit" class="btn btn-outline-primary">Register</button>
+              </form>
+              <a class="logout text-danger mt-1 ml-1 mb-2 font-weight-bold font-italic" routerLink="/login">Already Registered ? Click to Login!!</a>
+          </div>
+      </div>
+  </div>
+</div>

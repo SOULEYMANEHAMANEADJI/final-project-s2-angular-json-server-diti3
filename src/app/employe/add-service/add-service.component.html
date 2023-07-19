@@ -1,0 +1,43 @@
+<div class="all-add bg-secondary">
+    <div class="container center-form mb-4">
+        <div class="card col-md-10 bg-light mt-1 small-form">
+            <div class="card-header text-center">
+                <em class="font-italic">
+                    <h2 class="title font-weight-bold">Add a service</h2>
+                </em>
+            </div>
+            <!--  <div *ngIf="successMessage" class="alert alert-success">
+            {{ successMessage }}
+          </div>
+          
+          <div *ngIf="errorMessage" class="alert alert-danger">
+            {{ errorMessage }}
+          </div>
+         -->
+            <div class="card-body">
+                <form (ngSubmit)="addService()" #serviceForm="ngForm">
+                    <div class="form-group">
+                        <label for="service">Service</label>
+                        <input name="service" type="text" class="form-control" id="service"
+                            placeholder="Votre service ici" [(ngModel)]="service.name" required pattern="[A-Za-z]+"
+                            minlength="2" autocomplete="off" />
+                        <div *ngIf="serviceForm.controls['service'].invalid && serviceForm.controls['service'].touched"
+                            class="text-danger font-weight-bold">
+                            Le service est requis et doit contenir uniquement des caractères alphabétiques avec au moins
+                            2 caractères.
+                        </div>
+                        <!-- Ajoutez cette div après la div des erreurs existantes -->
+                        <div *ngIf="serviceExists" class="alert alert-danger">
+                            Le service existe déjà. Veuillez entrer un nom de service différent.
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-primary mr-2" [disabled]="serviceForm.invalid">Add</button>
+                        <button type="button" routerLink="/employe/list" class="btn btn-outline-info">Lister
+                            Employés</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

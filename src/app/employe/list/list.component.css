@@ -1,0 +1,15 @@
+.table-responsive {
+    overflow-x: auto;
+}  
+.scrolling-placeholder {
+    animation: scrolling-placeholder 8s linear infinite;
+}
+  
+  @keyframes scrolling-placeholder {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+}
